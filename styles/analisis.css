@@ -97,20 +97,17 @@ header {
 }
 
 #observaciones {
-    width: 90%;
-    max-width: 90%;
+    max-width: 100%;
     margin-left: 5%;
-    margin-right: 5%;
+    /* margin-right: 5%; */
     margin-bottom: 20px;
     word-wrap: break-word;
     background-color: rgb(0, 170, 224);
 }
 
 #conclusiones {
-    width: 90%;
-    max-width: 90%;
+    max-width: 100%;
     margin-left: 5%;
-    margin-right: 5%;
     margin-bottom: 20px;
     word-wrap: break-word;
     background-color: rgb(0, 170, 224);
@@ -119,17 +116,32 @@ header {
 #textbox_proveedores {
     display: flex;
     flex-direction: column;
-    max-width: 20%;
+    max-width: 40%;
 }
 
 #textbox_requisitos {
     display: flex;
     flex-direction: column;
-    max-width: 20%;
+    max-width: 40%;
 }
 
 #tabla {
-    font-weight: bold;
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+th {
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+tr {
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+td {
+    font-weight: lighter;
     font-size: 15px;
 }
 
