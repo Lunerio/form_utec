@@ -146,6 +146,9 @@ td {
 }
 
 #declaratoria {
+    text-align: justify;
+    text-justify: inter-word;
+    font-weight: bold;
     margin-top: 4%;
     margin-bottom: 30%;
 }
