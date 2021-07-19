@@ -1,0 +1,139 @@
+#top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header {
+    max-width: 50%;
+}
+
+#fecha {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#fecha_text {
+    align-self: auto;
+    min-width: 30%;
+    background-color: rgb(0, 170, 224);
+    font-weight: bold;
+}
+
+#title_text {
+    text-align: center;
+}
+
+#init_data {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+#ref {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ref h4 {
+    margin-right: 4px;
+}
+
+#ref_list {
+    margin-right: 10px;
+}
+
+#numero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+#numero h4 {
+    margin-right: 4px;
+}
+
+#nro {
+    min-width: 30px;
+    background-color: rgb(0, 170, 224);
+    font-weight: bold;
+}
+
+#comments {
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    word-wrap: break-word;
+    background-color: rgb(0, 170, 224);
+    font-weight: bold;
+}
+
+#ofertas_data {
+    display: flex;
+    align-items: center;
+}
+
+#ofertas {
+    width: 1%;
+    margin-left: 5px;
+    margin-right: 4px;
+}
+
+#requisitos_data {
+    display: flex;
+    align-items: center;
+}
+
+#requisitos {
+    width: 1%;
+    margin-left: 5px;
+    margin-right: 4px;
+}
+
+#observaciones {
+    width: 90%;
+    max-width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    background-color: rgb(0, 170, 224);
+}
+
+#conclusiones {
+    width: 90%;
+    max-width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    background-color: rgb(0, 170, 224);
+}
+
+#textbox_proveedores {
+    display: flex;
+    flex-direction: column;
+    max-width: 20%;
+}
+
+#textbox_requisitos {
+    display: flex;
+    flex-direction: column;
+    max-width: 20%;
+}
+
+#tabla {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#declaratoria {
+    margin-top: 4%;
+    margin-bottom: 30%;
+}

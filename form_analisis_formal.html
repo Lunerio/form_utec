@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Admisibilidad de Ofertas</title>
+    <link rel="stylesheet" href="./styles/analisis.css">
+    <script src="./scripts/jquery-3.6.0.js"></script>
+</head>
+
+<div id="doc">
+    <div id="top">
+        <header>
+            <img src="./images/logo.jpg" alt="logo" style="max-width: 120px;" id="logo_image">
+        </header>
+
+        <div id="fecha">
+            <h4>Fecha:</h4>
+            <div id="fecha_text" contenteditable=""></div>
+        </div>
+    </div>
+
+    <body>
+        <h1 id="title_text">Informe de Admisibilidad de Ofertas</h1>
+
+        <div id="init_data">
+            <div id="ref">
+                <h4>REF:</h4>
+                <select name="ref" id="ref_list">
+                    <option value="">Compra Directa</option>
+                    <option value="">Compra Directa por Excepcion</option>
+                    <option value="">Concurso de Precios</option>
+                    <option value="">Licitacion Abreviada</option>
+                    <option value="">Licitacion Publica</option>
+                </select>
+            </div>
+
+            <div id="numero">
+                <h4>Nro:</h4>
+                <div id="nro" contenteditable=""></div>
+                <h4>;</h4>
+            </div>
+
+            <div id="comments" contenteditable="">
+                Escriba una descripcion
+            </div>
+        </div>
+
+        <h4>Comprador: Universidad Tecnologica (UTEC)</h4>
+
+        <div id="ofertas_data">
+            <p>Se recibieron</p>
+            <input type="text" name="" id="ofertas" maxlength="2">
+            <!-- <div id="ofertas" contenteditable="">x</div> -->
+            <p>ofertas de las siguientes empresas:</p>
+        </div>
+        <div id="textbox_proveedores"></div>
+
+        <div id="requisitos_data">
+            <p>El procedimiento tiene</p>
+            <input type="text" name="" id="requisitos" maxlength="2">
+            <!-- <div id="requisitos" contenteditable="">x</div> -->
+            <p>requisitos excluyentes:</p>
+        
+        </div>
+        <div id="textbox_requisitos"></div>
+
+        <h2>ANALISIS FORMAL</h2>
+        <button id="btnGen">Generar tabla</button>
+
+        <h4>Tabla de cumplimiento de excluyentes</h4>
+        <div id="tabla">
+        </div>
+
+        <h3>Observaciones</h3>
+        <div id="observaciones" contenteditable="">Escriba las observaciones</div>
+
+        <h3>Conclusiones del Analisis Formal</h3>
+        <div id="conclusiones" contenteditable="">Escriba las conclusiones</div>
+
+        <p id="declaratoria">"Se declara que, conforme lo establecido por el artículo 72 del TOCAF, quienes suscriben el
+            presente informe no se encuentra en ninguna de las situaciones de incompatibilidad
+            previstas en la mencionada norma."</p>
+
+        <button id="pdfGen">Guardar PDF</button>
+
+    </body>
+</div>
+
+<script src="./scripts/script_analisis.js"></script>
+
+</html>
