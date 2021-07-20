@@ -4,10 +4,6 @@
     align-items: center;
 }
 
-header {
-    max-width: 50%;
-}
-
 #fecha {
     width: 40%;
     display: flex;
@@ -16,13 +12,15 @@ header {
 }
 
 #fecha_text {
+    margin-left: 2px;
     align-self: auto;
     min-width: 30%;
-    background-color: rgb(0, 170, 224);
+    /* background-color: rgb(0, 170, 224); */
     font-weight: bold;
 }
 
 #title_text {
+    margin-top: 2%;
     text-align: center;
 }
 
@@ -36,6 +34,12 @@ header {
 #ref {
     display: flex;
     justify-content: center;
+    align-items: baseline;
+    margin-right: 10px;
+}
+
+#ref_div {
+    width: max-content;
     align-items: center;
 }
 
@@ -60,17 +64,16 @@ header {
 
 #nro {
     min-width: 30px;
-    background-color: rgb(0, 170, 224);
+    /* background-color: rgb(0, 170, 224); */
     font-weight: bold;
 }
 
 #comments {
-    align-items: center;
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
     word-wrap: break-word;
-    background-color: rgb(0, 170, 224);
+    /* background-color: rgb(0, 170, 224); */
     font-weight: bold;
 }
 
@@ -90,6 +93,10 @@ header {
     align-items: center;
 }
 
+input {
+    font-size: 15px;
+}
+
 #requisitos {
     width: 1%;
     margin-left: 5px;
@@ -99,10 +106,9 @@ header {
 #observaciones {
     max-width: 100%;
     margin-left: 5%;
-    /* margin-right: 5%; */
     margin-bottom: 20px;
     word-wrap: break-word;
-    background-color: rgb(0, 170, 224);
+    /* background-color: rgb(0, 170, 224); */
 }
 
 #conclusiones {
@@ -110,7 +116,7 @@ header {
     margin-left: 5%;
     margin-bottom: 20px;
     word-wrap: break-word;
-    background-color: rgb(0, 170, 224);
+    /* background-color: rgb(0, 170, 224); */
 }
 
 #textbox_proveedores {
@@ -150,5 +156,25 @@ td {
     text-justify: inter-word;
     font-weight: bold;
     margin-top: 4%;
-    margin-bottom: 30%;
+    margin-bottom: 10%;
 }
+
+.prePDF {
+    background-color: rgb(0, 170, 224);
+}
+
+.postPDF {
+    background-color: transparent;
+}
+
+.postPdfOther {
+    background: none;
+    border: none;
+}
+
+.botPDF {
+    height: 0;
+    visibility: hidden;
+    display: none;
+}
+

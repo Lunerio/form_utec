@@ -10,14 +10,12 @@ textOfertas.addEventListener('input', function createOfertasText() {
     cleanChild(ofertasDiv);
     let ofertasNum = textOfertas.value;
     if (!ofertasNum) {
-        // textOfertas.innerHTML = 'x';
         cleanChild(ofertasDiv);
         cleanChild(tablaDiv);
     }
     else {
         let ofertasNum = Number(textOfertas.value);
         if (ofertasNum === 0) {
-            // textOfertas.innerHTML = 'x';
             cleanChild(ofertasDiv);
             cleanChild(tablaDiv);
         }
@@ -37,14 +35,12 @@ textRequisitos.addEventListener('input', function createRequisitosText() {
     cleanChild(requisitosDiv);
     let requisitosNum = textRequisitos.value;
     if (!requisitosNum) {
-        // textRequisitos.innerHTML = 'x';
         cleanChild(requisitosDiv);
         cleanChild(tablaDiv);
     }
     else {
         let requisitosNum = Number(textRequisitos.value);
         if (requisitosNum === 0) {
-            // textRequisitos.innerHTML = 'x';
             cleanChild(requisitosDiv);
             cleanChild(tablaDiv);
         }
@@ -113,16 +109,74 @@ function tableGen() {
                 cell.appendChild(checkbox);
             }
         }
-
         tablaDiv.appendChild(table);
     }
 }
 
-let botonPDF = document.getElementById('pdfGen');
+let comments = document.getElementById('comments');
+comments.addEventListener('focus', function () {
+    this.innerHTML = '';
+});
 
+let observaciones = document.getElementById('observaciones');
+observaciones.addEventListener('focus', function () {
+    this.innerHTML = '';
+});
+
+let conclusiones = document.getElementById('conclusiones');
+conclusiones.addEventListener('focus', function () {
+    this.innerHTML = '';
+});
+
+let botonPDF = document.getElementById('pdfGen');
 botonPDF.addEventListener('click', getPDF);
 
 function getPDF() {
-    // Modificar elementos para que no aparezcan
-    window.print();
+    fecha_text = document.getElementById('fecha_text');
+    fecha_text.className = 'postPDF';
+
+    nro = document.getElementById('nro');
+    nro.className = 'postPDF';
+
+    comments = document.getElementById('comments');
+    comments.className = 'postPDF';
+
+    observaciones = document.getElementById('observaciones');
+    observaciones.className = 'postPDF';
+
+    conclusiones = document.getElementById('conclusiones');
+    conclusiones.className = 'postPDF';
+
+    ref_list = document.getElementById('ref_list');
+    ref_list_value = ref_list.options[ref_list.selectedIndex].text;
+    console.log(ref_list_value);
+    ref_div = document.getElementById('ref_div');
+    cleanChild(ref_div);
+    let textref = document.createElement('div');
+    textref.innerHTML = ref_list_value;
+    textref.className = 'testing';
+    ref_div.appendChild(textref);
+    
+    ofertas = document.getElementById('ofertas');
+    ofertas.className = 'postPdfOther';
+
+    textbox_proveedores = document.getElementById('textbox_proveedores');
+    textbox_proveedores_elements = textbox_proveedores.children;
+    for (let i = 0; i < textbox_proveedores_elements.length; i++) {
+        textbox_proveedores_elements[i].className = 'postPdfOther';
+    }
+
+    requisitos_data = document.getElementById('requisitos_data');
+    requisitos_data.className = 'botPDF';
+
+    textbox_requisitos = document.getElementById('textbox_requisitos');
+    textbox_requisitos.className = 'botPDF';
+
+    btnGen = document.getElementById('btnGen');
+    btnGen.className = 'botPDF';
+
+    pdfGen = document.getElementById('pdfGen');
+    pdfGen.className = 'botPDF';
+    window.print(screen);
 }
+
