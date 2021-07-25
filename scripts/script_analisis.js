@@ -1,3 +1,10 @@
+// Flag para la edicion de los div
+// Cambiarlo a 1 en cada lugar que se edite su contenido
+let flagComments = 0;
+let flagObservaciones = 0;
+let flagConclusiones = 0;
+
+
 let textOfertas = document.getElementById("ofertas");
 let textRequisitos = document.getElementById("requisitos");
 
@@ -20,8 +27,8 @@ textOfertas.addEventListener('input', function createOfertasText() {
             cleanChild(tablaDiv);
         }
         else {
-            if (ofertasNum > 15) {
-                ofertasNum = 15;
+            if (ofertasNum > 10) {
+                ofertasNum = 10;
             }
             for (let i = 0; i < ofertasNum ; i++) {
                 let textBox = document.createElement('input');
@@ -45,8 +52,8 @@ textRequisitos.addEventListener('input', function createRequisitosText() {
             cleanChild(tablaDiv);
         }
         else {
-            if (requisitosNum > 15) {
-                requisitosNum = 15;
+            if (requisitosNum > 10) {
+                requisitosNum = 10;
             }
             for (let i = 0; i < requisitosNum ; i++) {
                 let textBox = document.createElement('input');
@@ -115,17 +122,26 @@ function tableGen() {
 
 let comments = document.getElementById('comments');
 comments.addEventListener('focus', function () {
-    this.innerHTML = '';
+    if (flagComments === 0) {
+        this.innerHTML = '';
+        flagComments = 1;
+    }
 });
 
 let observaciones = document.getElementById('observaciones');
 observaciones.addEventListener('focus', function () {
-    this.innerHTML = '';
+    if (flagObservaciones === 0) {
+        this.innerHTML = '';
+        flagObservaciones = 1;
+    }
 });
 
 let conclusiones = document.getElementById('conclusiones');
 conclusiones.addEventListener('focus', function () {
-    this.innerHTML = '';
+    if (flagConclusiones === 0) {
+        this.innerHTML = '';
+        flagConclusiones = 1;
+    }
 });
 
 let botonPDF = document.getElementById('pdfGen');
@@ -177,6 +193,7 @@ function getPDF() {
 
     pdfGen = document.getElementById('pdfGen');
     pdfGen.className = 'botPDF';
-    window.print(screen);
+    window.print();
+    // Volver los estilos para atras
+    
 }
-
