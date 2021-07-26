@@ -27,8 +27,8 @@ textOfertas.addEventListener('input', function createOfertasText() {
             cleanChild(tablaDiv);
         }
         else {
-            if (ofertasNum > 10) {
-                ofertasNum = 10;
+            if (ofertasNum > 15) {
+                ofertasNum = 15;
             }
             for (let i = 0; i < ofertasNum ; i++) {
                 let textBox = document.createElement('input');
@@ -144,10 +144,7 @@ conclusiones.addEventListener('focus', function () {
     }
 });
 
-let botonPDF = document.getElementById('pdfGen');
-botonPDF.addEventListener('click', getPDF);
-
-function getPDF() {
+document.getElementById('pdfGen').onclick = function () {
     fecha_text = document.getElementById('fecha_text');
     fecha_text.className = 'postPDF';
 
@@ -193,7 +190,12 @@ function getPDF() {
 
     pdfGen = document.getElementById('pdfGen');
     pdfGen.className = 'botPDF';
+
     window.print();
+
     // Volver los estilos para atras
-    
+    pdfGen.className = '';
+    btnGen.className = '';
+    textbox_requisitos.className = '';
+    requisitos_data.className = '';
 }
