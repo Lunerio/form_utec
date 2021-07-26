@@ -4,6 +4,8 @@ let flagComments = 0;
 let flagObservaciones = 0;
 let flagConclusiones = 0;
 
+// Flag para el ref_list
+let flagRefList = 0;
 
 let textOfertas = document.getElementById("ofertas");
 let textRequisitos = document.getElementById("requisitos");
@@ -161,15 +163,20 @@ document.getElementById('pdfGen').onclick = function () {
     conclusiones.className = 'postPDF';
 
     ref_list = document.getElementById('ref_list');
-    ref_list_value = ref_list.options[ref_list.selectedIndex].text;
-    console.log(ref_list_value);
-    ref_div = document.getElementById('ref_div');
-    cleanChild(ref_div);
-    let textref = document.createElement('div');
-    textref.innerHTML = ref_list_value;
-    textref.className = 'testing';
-    ref_div.appendChild(textref);
-    
+    if (flagRefList === 0) {
+        ref_list.className = 'botPDF';
+        ref_list_value = ref_list.options[ref_list.selectedIndex].text;
+        let textref = document.createElement('div');
+        textref.id = 'textref';
+        textref.innerHTML = ref_list_value;
+        ref_div.appendChild(textref);
+        flagRefList = 1;
+    } else {
+        textref = document.getElementById('textref');
+        textref.parentNode.removeChild('textref');
+        ref_list.className = '';
+    }
+
     ofertas = document.getElementById('ofertas');
     ofertas.className = 'postPdfOther';
 
@@ -194,6 +201,21 @@ document.getElementById('pdfGen').onclick = function () {
     window.print();
 
     // Volver los estilos para atras
+
+    if (flagRefList === 0) {
+        ref_list.className = 'botPDF';
+        ref_list_value = ref_list.options[ref_list.selectedIndex].text;
+        let textref = document.createElement('div');
+        textref.id = 'textref';
+        textref.innerHTML = ref_list_value;
+        ref_div.appendChild(textref);    
+    } else {
+        textref = document.getElementById('textref');
+        textref.parentNode.removeChild(textref);
+        ref_list.className = '';
+        flagRefList = 0;
+    }
+
     pdfGen.className = '';
     btnGen.className = '';
     textbox_requisitos.className = '';
