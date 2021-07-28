@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Análisis Técnico de Ofertas</title>
+    <link rel="stylesheet" href="./styles/tecnico.css">
+    <script src="./scripts/jquery-3.6.0.js"></script>
+</head>
+
+<div id="top">
+    <header>
+        <img src="./images/logo.jpg" alt="logo" style="max-width: 120px;" id="logo_image">
+    </header>
+    <div id="fecha">
+        <h4>Fecha:</h4>
+        <div id="fecha_text" contenteditable="" class="prePDF"></div>
+    </div>
+</div>
+
+<body>
+    <h1 id="title_text">Informe de Análisis Técnico de Ofertas</h1>
+
+    <div id="init_data">
+        <div id="ref">
+            <h4>REF:</h4>
+            <div id="ref_div">
+                <select name="ref" id="ref_list">
+                    <option value="">Elija procedimiento...</option>
+                    <option value="">Compra Directa</option>
+                    <option value="">Compra Directa por Excepción</option>
+                    <option value="">Concurso de Precios</option>
+                    <option value="">Licitación Abreviada</option>
+                    <option value="">Licitación Pública</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="numero">
+            <h4>Nro:</h4>
+            <div id="nro" contenteditable="" class="prePDF"></div>
+            <h4>;</h4>
+        </div>
+
+        <div id="comments" contenteditable="" class="prePDF">
+            Escriba una descripción
+        </div>
+    </div>
+
+    <h4>Comprador: Universidad Tecnológica (UTEC)</h4>
+
+    <div id="ofertas_data">
+        <p>Se recibieron</p>
+        <input type="text" name="" id="ofertas" maxlength="2">
+        <p>ofertas que superaron el análisis formal, de las siguientes empresas:</p>
+    </div>
+    <div id="textbox_proveedores"></div>
+
+    <h3>EVALUACIÓN TÉCNICA</h3>
+    <div id="excluyentes_data">
+        <p>Especificaciones Técnicas Excluyentes:</p>
+        <input type="text" name="" id="excluyentes" maxlength="2">
+    </div>
+    <div id="textbox_excluyentes"></div>
+
+    <button id="btnCump">Generar tabla de cumplimiento</button>
+
+    <h4>Tabla de cumplimiento de especificaciones técnicas excluyentes</h4>
+    <div id="tablaCump"></div>
+
+    <h3>Observaciones</h3>
+    <div id="observaciones1" contenteditable="" class="prePDF">Escriba las observaciones</div>
+
+    <div id="especificaciones_data">
+        <p>Especificaciones Técnicas Puntuables:</p>
+        <input type="text" name="" id="especificaciones" maxlength="2">
+    </div>
+    <div id="textbox_especificaciones"></div>
+
+    <button id="btnPunt">Generar tabla de puntuación</button>
+    <h4>Tabla de puntuación de especificaciones técnicas</h4>
+    <div id="tablaPunt"></div>
+
+    <h3>Observaciones</h3>
+    <div id="observaciones2" contenteditable="" class="prePDF">Escriba las observaciones</div>
+
+    <h4>EVALUACIÓN ECONÓMICA</h4>
+    <button id="btnEval">Generar tabla de evaluación</button>
+    <div id="tablaEval"></div>
+
+    <h3>Conclusiones</h3>
+    <div id="conclusiones" contenteditable="" class="prePDF">Escriba las conclusiones</div>
+
+    <p id="declaratoria">"Se declara que, conforme lo establecido por el artículo 72 del TOCAF, quienes suscriben el presente informe no se encuentran en ninguna de las situaciones de incompatibilidad previstas en la mencionada norma."</p>
+
+    <button id="pdfGen">Guardar PDF</button>
+
+</body>
+
+<script src="./scripts/script_informe.js"></script>
+
+</html>
