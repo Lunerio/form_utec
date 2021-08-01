@@ -221,7 +221,7 @@ function tablaPuntGen() {
                 let cell = row.insertCell(-1);
                 let textbox = document.createElement('input');
                 textbox.setAttribute('type', 'text');
-                textbox.style.width = '18px'
+                textbox.style.width = '25px'
                 cell.appendChild(textbox);
             }
         }
@@ -234,11 +234,23 @@ let btnSuma = document.getElementById('btnSuma');
 btnSuma.addEventListener('click', function doSuma () {
     // Obtener el elemento de tabla y asi sus rows.
     // Cada row son los tr, y debemos arrancar desde el index 1
-    let table = document.getElementById('tablaPuntaje').rows;
-    console.log(table);
+    let rows = document.getElementById('tablaPuntaje').rows;
+    // Primero recorrer los rows y limpiar el ultimo cell
+    for (let i = 1; i < rows.length; i++) {
+        let j = document.getElementById('tablaPuntaje').rows[i].cells.length;
+        lastCell = document.getElementById('tablaPuntaje').rows[i].cells[j-1].lastChild;
+        lastCell.value = '';
+    }
+    // Ahora recorro para hacer la suma
+    for (let i = 1; i < rows.length; i++) {
+        let suma = 0;
+        for (var j = 1; j < rows[i].cells.length; j++) {
+            suma += Number(rows[i].cells[j].lastChild.value);
+        }
+        let valueCell = document.getElementById('tablaPuntaje').rows[i].cells[j-1].lastChild
+        valueCell.value = suma.toString();
+    }
 });
-
-
 
 
 // Cambia el flag para que no se borre el contenido de divs de texto una vez editados
