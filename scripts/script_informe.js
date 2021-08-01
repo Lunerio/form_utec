@@ -1,17 +1,25 @@
+// Flags para cambios en divs de text
 let flagComments = 0;
 let flagObservaciones1 = 0;
 let flagObservaciones2 = 0;
 let flagConclusiones = 0;
 let flagRefList = 0;
 
-let tablaCump = document.getElementById("tablaCump");
 
+// Obtener los elementos necesarios previos a funciones
+let tablaCump = document.getElementById("tablaCump");
+let tablaPunt = document.getElementById("tablaPunt");
+
+
+// Funcion para limpiar divs
 function cleanChild(parentNode) {
     while (parentNode.firstChild) {
         parentNode.removeChild(parentNode.lastChild);
     }
 };
 
+
+// Generar los textboxes para los proveedores, segun su cantidad
 let ofertasDiv = document.getElementById("textbox_proveedores");
 let textOfertas = document.getElementById("ofertas");
 textOfertas.addEventListener('input', function createOfertasText() {
@@ -39,6 +47,8 @@ textOfertas.addEventListener('input', function createOfertasText() {
     }
 });
 
+
+// Generar los textboxes de requisitos excluyentes segun su cantidad
 let excluyentesDiv = document.getElementById("textbox_excluyentes");
 let textExcluyentes = document.getElementById("excluyentes");
 textExcluyentes.addEventListener('input', function createExcluyentesText() {
@@ -76,77 +86,78 @@ textExcluyentes.addEventListener('input', function createExcluyentesText() {
     }
 });
 
-
+// Funcion para el boton de tabla de cumplimiento
 let botonTablaCump = document.getElementById('btnCump');
 botonTablaCump.addEventListener('click', tablaCumpGen);
 function tablaCumpGen() {
     cleanChild(tablaCump);
 
-    let requisitosNum = textRequisitos.value;
+    // Obtener los valores de cantidad de ofertas y de requisitos excluyentes
+    let excluyentesNum = textExcluyentes.value;
     let ofertasNum = textOfertas.value;
 
-    if (!requisitosNum || !ofertasNum) {
-        alert('Asegurese de llenar los campos de cantidad de proveedores y de requisitos');
+    if (!excluyentesNum || !ofertasNum) {
+        alert('Asegurese de llenar los campos de proveedores y de especificaciones tecnicas excluyentes');
     } else {
-        let arrayReq = new Array();
-        let requisitosList = requisitosDiv.children;
-        for (let i = 0; i < requisitosList.length; i++) {
-            arrayReq.push(requisitosList[i].value);
-        }
-
+        // Crear arrays con los proveedores para generar la tabla
         let arrayProv = new Array();
         let provList = ofertasDiv.children;
         for (let i = 0; i < provList.length; i++) {
             arrayProv.push(provList[i].value);
         }
 
-        let table = document.createElement("TABLE");
+        // Crear tabla
 
+        // Crear primer row, con los requisitos excluyentes
+        let table = document.createElement("TABLE");
         let row = table.insertRow(-1);
         let headerCell = document.createElement("TH");
         headerCell.innerHTML = '';
         row.appendChild(headerCell);
-        for (let i = 0; i < arrayReq.length; i++) {
+        for (let i = 1; i <= excluyentesNum; i++) {
             let headerCell = document.createElement("TH");
-            headerCell.innerHTML = arrayReq[i];
+            headerCell.innerHTML = 'ETEx' + i.toString();
             row.appendChild(headerCell);
         }
 
+        // Crear siguientes rows
         for (let i = 0; i < arrayProv.length; i++) {
             row = table.insertRow(-1);
             let cell = row.insertCell(-1);
             cell.innerHTML = arrayProv[i];
-            for (let j = 0; j < arrayReq.length; j++) {
+            for (let j = 0; j < excluyentesNum; j++) {
                 let cell = row.insertCell(-1);
                 let checkbox = document.createElement('input');
                 checkbox.setAttribute('type', 'checkbox');
                 cell.appendChild(checkbox);
             }
         }
-        tablaDiv.appendChild(table);
+        tablaCump.appendChild(table);
     }
 }
 
-let especificacionesDiv = document.getElementById("textbox_especificaciones");
-let textEspecificaciones = document.getElementById("especificaciones");
-textEspecificaciones.addEventListener('input', function createEspecificacionesText() {
-    cleanChild(especificacionesDiv);
-    let especificacionesNum = textEspecificaciones.value;
-    if (!especificacionesNum) {
-        cleanChild(especificacionesDiv);
-        cleanChild(tablaCump);
+
+// Crear textboxes para requisitos puntuables
+let puntuablesDiv = document.getElementById("textbox_puntuables");
+let textPuntuables = document.getElementById("puntuables");
+textPuntuables.addEventListener('input', function createPuntuablesText() {
+    cleanChild(puntuablesDiv);
+    let puntuablesNum = textPuntuables.value;
+    if (!puntuablesNum) {
+        cleanChild(puntuablesDiv);
+        cleanChild(tablaPunt);
     }
     else {
-        let especificacionesNum = Number(textEspecificaciones.value);
-        if (especificacionesNum === 0) {
-            cleanChild(especificacionesDiv);
+        let puntuablesNum = Number(textPuntuables.value);
+        if (puntuablesNum === 0) {
+            cleanChild(puntuablesDiv);
             cleanChild(tablaCump);
         }
         else {
-            if (especificacionesNum > 10) {
-                especificacionesNum = 10;
+            if (puntuablesNum > 10) {
+                puntuablesNum = 10;
             }
-            for (let i = 1; i <= especificacionesNum ; i++) {
+            for (let i = 1; i <= puntuablesNum ; i++) {
                 let divEspe = document.createElement('div');
                 divEspe.id = 'divEspe';
 
@@ -158,12 +169,67 @@ textEspecificaciones.addEventListener('input', function createEspecificacionesTe
                 let textBox = document.createElement('input');
                 divEspe.appendChild(textBox);
 
-                especificacionesDiv.appendChild(divEspe);
+                puntuablesDiv.appendChild(divEspe);
             }
         }
     }
 });
 
+// Funcion para el boton de tabla de puntuacion
+let botonTablaCump = document.getElementById('btnPunt');
+botonTablaPunt.addEventListener('click', tablaPuntGen);
+function tablaPuntGen() {
+    cleanChild(tablaPunt);
+
+    // Obtener los valores de cantidad de requisitos puntuables
+    let puntuablesNum = textPuntuables.value;
+
+    if (!puntuablesNum) {
+        alert('Asegurese de llenar los campos de requisitos puntuables');
+    } else {
+        // Crear arrays con los requisitos para generar la tabla
+        let arrayPunt = new Array();
+        let puntuablesList = puntuablesDiv.children;
+        for (let i = 0; i < puntuablesList.length; i++) {
+            arrayPunt.push(puntuablesList[i].value);
+        }
+
+        // Crear tabla
+
+        // Crear primer row, con los requisitos puntuables
+        let table = document.createElement("TABLE");
+        let row = table.insertRow(-1);
+        let headerCell = document.createElement("TH");
+        headerCell.innerHTML = '';
+        row.appendChild(headerCell);
+        for (let i = 1; i <= puntuablesNum; i++) {
+            let headerCell = document.createElement("TH");
+            headerCell.innerHTML = 'ET' + i.toString();
+            row.appendChild(headerCell);
+        }
+        let headerCell = document.createElement("TH");
+        headerCell.innerHTML = 'Puntaje Técnico';        
+
+        // Crear siguientes rows
+        for (let i = 0; i < arrayProv.length; i++) {
+            row = table.insertRow(-1);
+            let cell = row.insertCell(-1);
+            cell.innerHTML = arrayProv[i];
+            for (let j = 0; j < excluyentesNum; j++) {
+                let cell = row.insertCell(-1);
+                let textbox = document.createElement('input');
+                textbox.setAttribute('type', 'text');
+                cell.appendChild(textbox);
+            }
+        }
+        tablaCump.appendChild(table);
+    }
+}
+
+
+
+
+// Cambia el flag para que no se borre el contenido de divs de texto una vez editados
 let comments = document.getElementById('comments');
 comments.addEventListener('focus', function () {
     if (flagComments === 0) {
@@ -171,7 +237,6 @@ comments.addEventListener('focus', function () {
         flagComments = 1;
     }
 });
-
 let observaciones1 = document.getElementById('observaciones1');
 observaciones1.addEventListener('focus', function () {
     if (flagObservaciones1 === 0) {
@@ -179,7 +244,6 @@ observaciones1.addEventListener('focus', function () {
         flagObservaciones1 = 1;
     }
 });
-
 let observaciones2 = document.getElementById('observaciones2');
 observaciones2.addEventListener('focus', function () {
     if (flagObservaciones2 === 0) {
@@ -187,7 +251,6 @@ observaciones2.addEventListener('focus', function () {
         flagObservaciones2 = 1;
     }
 });
-
 let conclusiones = document.getElementById('conclusiones');
 conclusiones.addEventListener('focus', function () {
     if (flagConclusiones === 0) {
@@ -195,6 +258,9 @@ conclusiones.addEventListener('focus', function () {
         flagConclusiones = 1;
     }
 });
+
+
+
 
 // document.getElementById('pdfGen').onclick = function () {
 //     fecha_text = document.getElementById('fecha_text');
