@@ -176,7 +176,7 @@ textPuntuables.addEventListener('input', function createPuntuablesText() {
 });
 
 // Funcion para el boton de tabla de puntuacion
-let botonTablaCump = document.getElementById('btnPunt');
+let botonTablaPunt = document.getElementById('btnPunt');
 botonTablaPunt.addEventListener('click', tablaPuntGen);
 function tablaPuntGen() {
     cleanChild(tablaPunt);
@@ -188,16 +188,17 @@ function tablaPuntGen() {
         alert('Asegurese de llenar los campos de requisitos puntuables');
     } else {
         // Crear arrays con los requisitos para generar la tabla
-        let arrayPunt = new Array();
-        let puntuablesList = puntuablesDiv.children;
-        for (let i = 0; i < puntuablesList.length; i++) {
-            arrayPunt.push(puntuablesList[i].value);
+        let arrayProv = new Array();
+        let provList = ofertasDiv.children;
+        for (let i = 0; i < provList.length; i++) {
+            arrayProv.push(provList[i].value);
         }
 
         // Crear tabla
 
         // Crear primer row, con los requisitos puntuables
         let table = document.createElement("TABLE");
+        table.id = 'tablaPuntaje';
         let row = table.insertRow(-1);
         let headerCell = document.createElement("TH");
         headerCell.innerHTML = '';
@@ -207,24 +208,35 @@ function tablaPuntGen() {
             headerCell.innerHTML = 'ET' + i.toString();
             row.appendChild(headerCell);
         }
-        let headerCell = document.createElement("TH");
-        headerCell.innerHTML = 'Puntaje Técnico';        
+        let finalCell = document.createElement("TH");
+        finalCell.innerHTML = 'Puntaje Técnico';        
+        row.appendChild(finalCell);
 
         // Crear siguientes rows
         for (let i = 0; i < arrayProv.length; i++) {
             row = table.insertRow(-1);
             let cell = row.insertCell(-1);
             cell.innerHTML = arrayProv[i];
-            for (let j = 0; j < excluyentesNum; j++) {
+            for (let j = 0; j <= puntuablesNum; j++) {
                 let cell = row.insertCell(-1);
                 let textbox = document.createElement('input');
                 textbox.setAttribute('type', 'text');
+                textbox.style.width = '18px'
                 cell.appendChild(textbox);
             }
         }
-        tablaCump.appendChild(table);
+        tablaPunt.appendChild(table);
     }
 }
+
+// Esta funcion hace la suma de puntajes de cada row y lo pone en la ultima celda
+let btnSuma = document.getElementById('btnSuma');
+btnSuma.addEventListener('click', function doSuma () {
+    // Obtener el elemento de tabla y asi sus rows.
+    // Cada row son los tr, y debemos arrancar desde el index 1
+    let table = document.getElementById('tablaPuntaje').rows;
+    console.log(table);
+});
 
 
 
