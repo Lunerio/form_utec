@@ -2,7 +2,7 @@
     <img src="https://www.smarttalent.uy/innovaportal/file/55089/1/utec.png" width="400px">
 </div>
 
-# Formularios técnicos para presupuestaciones en UTEC
+# Formularios para evaluaciones de admisibilidad y técnica en procedimientos competitivos de UTEC
 
 ### Modo de uso:
 * Para usar estos formularios descarguelos desde la pestaña que dice "Code", y clickee en "Download ZIP".
