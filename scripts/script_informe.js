@@ -274,12 +274,12 @@ botonTablaEval.addEventListener('click', function tablaEvalGen(){;
     let headerCell = document.createElement("TH");
     headerCell.innerHTML = '';
     row.appendChild(headerCell);
-    let monedaCell = document.createElement('TH');
-    monedaCell.innerHTML = '';
-    row.appendChild(monedaCell);
+    // let monedaCell = document.createElement('TH');
+    // monedaCell.innerHTML = '';
+    // row.appendChild(monedaCell);
 
     // Crear headers con texto
-    let listaHeaders = ['Oferta Economica', 'Puntuacion Economica', 'Puntuacion Final'];
+    let listaHeaders = ['Oferta Económica', 'Puntuación Económica', 'Puntuación Final'];
     for (let i = 0; i < listaHeaders.length; i++) {
         let headerCell = document.createElement("TH");
         headerCell.innerHTML = listaHeaders[i];
@@ -293,22 +293,33 @@ botonTablaEval.addEventListener('click', function tablaEvalGen(){;
         let cell = row.insertCell(-1);
         cell.innerHTML = arrayProv[i];
         // Insertar el dropdown de monedas
-        let monedaDrop = document.createElement('select');
-        let monedasList = ['USD', '$', 'EUR'];
-        for (let i = 0; i < monedasList.length; i++) {
-            let optionElement = document.createElement('option');
-            optionElement.innerHTML = monedasList[i];
-            monedaDrop.appendChild(optionElement);
-        }
-        let newCell = row.insertCell(-1);
-        newCell.appendChild(monedaDrop);
+        // let monedaDrop = document.createElement('select');
+        // monedaDrop.id = 'monedadrop';
+        // let monedasList = ['USD', '$', 'EUR'];
+        // for (let i = 0; i < monedasList.length; i++) {
+        //     let optionElement = document.createElement('option');
+        //     optionElement.innerHTML = monedasList[i];
+        //     monedaDrop.appendChild(optionElement);
+        // }
+        // let newCell = row.insertCell(-1);
+        // newCell.appendChild(monedaDrop);
 
         // Crear siguientes celdas
+        // Poner solo el drop down en la primer columna (oferta economica)
         for (let j = 0; j < 3; j++) {
             let cell = row.insertCell(-1);
+            let monedaDrop = document.createElement('select');
+            monedaDrop.id = 'monedadrop';
+            let monedasList = ['USD', '$', 'EUR'];
+            for (let i = 0; i < monedasList.length; i++) {
+                let optionElement = document.createElement('option');
+                optionElement.innerHTML = monedasList[i];
+                monedaDrop.appendChild(optionElement);
+            }
+            cell.appendChild(monedaDrop);
             let textbox = document.createElement('input');
             textbox.setAttribute('type', 'text');
-            textbox.style.width = '110px'
+            textbox.style.width = '110px';
             cell.appendChild(textbox);
         }
     }
@@ -347,80 +358,92 @@ conclusiones.addEventListener('focus', function () {
 });
 
 
+// Funcion para el boton de generar PDF
+document.getElementById('pdfGen').onclick = function () {
+    fecha_text = document.getElementById('fecha_text');
+    fecha_text.className = 'postPDF';
 
+    nro = document.getElementById('nro');
+    nro.className = 'postPDF';
 
-// document.getElementById('pdfGen').onclick = function () {
-//     fecha_text = document.getElementById('fecha_text');
-//     fecha_text.className = 'postPDF';
+    comments = document.getElementById('comments');
+    comments.className = 'postPDF';
 
-//     nro = document.getElementById('nro');
-//     nro.className = 'postPDF';
+    observaciones1 = document.getElementById('observaciones1');
+    observaciones1.className = 'postPDF';
 
-//     comments = document.getElementById('comments');
-//     comments.className = 'postPDF';
+    observaciones2 = document.getElementById('observaciones2');
+    observaciones2.className = 'postPDF';
 
-//     observaciones = document.getElementById('observaciones');
-//     observaciones.className = 'postPDF';
+    conclusiones = document.getElementById('conclusiones');
+    conclusiones.className = 'postPDF';
 
-//     conclusiones = document.getElementById('conclusiones');
-//     conclusiones.className = 'postPDF';
+    ref_list = document.getElementById('ref_list');
+    if (flagRefList === 0) {
+        ref_list.className = 'botPDF';
+        ref_list_value = ref_list.options[ref_list.selectedIndex].text;
+        let textref = document.createElement('div');
+        textref.id = 'textref';
+        textref.innerHTML = ref_list_value;
+        ref_div.appendChild(textref);
+        flagRefList = 1;
+    } else {
+        textref = document.getElementById('textref');
+        textref.parentNode.removeChild('textref');
+        ref_list.className = '';
+    }
 
-//     ref_list = document.getElementById('ref_list');
-//     if (flagRefList === 0) {
-//         ref_list.className = 'botPDF';
-//         ref_list_value = ref_list.options[ref_list.selectedIndex].text;
-//         let textref = document.createElement('div');
-//         textref.id = 'textref';
-//         textref.innerHTML = ref_list_value;
-//         ref_div.appendChild(textref);
-//         flagRefList = 1;
-//     } else {
-//         textref = document.getElementById('textref');
-//         textref.parentNode.removeChild('textref');
-//         ref_list.className = '';
-//     }
+    ofertas = document.getElementById('ofertas');
+    ofertas.className = 'postPdfOther';
 
-//     ofertas = document.getElementById('ofertas');
-//     ofertas.className = 'postPdfOther';
+    allTextBoxes = document.getElementsByTagName('input');
+    for (let i = 0; i < allTextBoxes.length; i++) {
+        allTextBoxes[i].className = 'postPdfOther';
+    }
 
-//     textbox_proveedores = document.getElementById('textbox_proveedores');
-//     textbox_proveedores_elements = textbox_proveedores.children;
-//     for (let i = 0; i < textbox_proveedores_elements.length; i++) {
-//         textbox_proveedores_elements[i].className = 'postPdfOther';
-//     }
+    monedaSelect = document.querySelectorAll('#monedadrop');
+    for (let i = 0; i < monedaSelect.length; i++) {
+        monedaSelect[i].className = 'selectPDF';
+    }
 
-//     requisitos_data = document.getElementById('requisitos_data');
-//     requisitos_data.className = 'botPDF';
+    btnCump = document.getElementById('btnCump');
+    btnCump.className = 'botPDF';
 
-//     textbox_requisitos = document.getElementById('textbox_requisitos');
-//     textbox_requisitos.className = 'botPDF';
+    btnPunt = document.getElementById('btnPunt');
+    btnPunt.className = 'botPDF';
 
-//     btnGen = document.getElementById('btnGen');
-//     btnGen.className = 'botPDF';
+    btnSuma = document.getElementById('btnSuma');
+    btnSuma.className = 'botPDF';
 
-//     pdfGen = document.getElementById('pdfGen');
-//     pdfGen.className = 'botPDF';
+    btnEval = document.getElementById('btnEval');
+    btnEval.className = 'botPDF';
 
-//     window.print();
+    pdfGen = document.getElementById('pdfGen');
+    pdfGen.className = 'botPDF';
 
-//     // Volver los estilos para atras
+    window.print();
 
-//     if (flagRefList === 0) {
-//         ref_list.className = 'botPDF';
-//         ref_list_value = ref_list.options[ref_list.selectedIndex].text;
-//         let textref = document.createElement('div');
-//         textref.id = 'textref';
-//         textref.innerHTML = ref_list_value;
-//         ref_div.appendChild(textref);    
-//     } else {
-//         textref = document.getElementById('textref');
-//         textref.parentNode.removeChild(textref);
-//         ref_list.className = '';
-//         flagRefList = 0;
-//     }
+    // Volver los estilos para atras
+    if (flagRefList === 0) {
+        ref_list.className = 'botPDF';
+        ref_list_value = ref_list.options[ref_list.selectedIndex].text;
+        let textref = document.createElement('div');
+        textref.id = 'textref';
+        textref.innerHTML = ref_list_value;
+        ref_div.appendChild(textref);    
+    } else {
+        textref = document.getElementById('textref');
+        textref.parentNode.removeChild(textref);
+        ref_list.className = '';
+        flagRefList = 0;
+    }
 
-//     pdfGen.className = '';
-//     btnGen.className = '';
-//     textbox_requisitos.className = '';
-//     requisitos_data.className = '';
-// }
+    pdfGen.className = '';
+    btnCump.className = '';
+    btnPunt.className = '';
+    btnSuma.className = '';
+    btnEval.className = '';
+    monedaSelect.className = '';
+    textbox_excluyentes.className = '';
+    excluyentes_data.className = '';
+}
