@@ -4,7 +4,7 @@ let flagObservaciones1 = 0;
 let flagObservaciones2 = 0;
 let flagConclusiones = 0;
 let flagRefList = 0;
-
+let flagMoneda = 0;
 
 // Obtener los elementos necesarios previos a funciones
 let tablaCump = document.getElementById("tablaCump");
@@ -291,37 +291,35 @@ botonTablaEval.addEventListener('click', function tablaEvalGen(){;
         // Primero insertar el nombre de empresa
         row = table.insertRow(-1);
         let cell = row.insertCell(-1);
+        cell.className = 'cellEmp';
         cell.innerHTML = arrayProv[i];
-        // Insertar el dropdown de monedas
-        // let monedaDrop = document.createElement('select');
-        // monedaDrop.id = 'monedadrop';
-        // let monedasList = ['USD', '$', 'EUR'];
-        // for (let i = 0; i < monedasList.length; i++) {
-        //     let optionElement = document.createElement('option');
-        //     optionElement.innerHTML = monedasList[i];
-        //     monedaDrop.appendChild(optionElement);
-        // }
-        // let newCell = row.insertCell(-1);
-        // newCell.appendChild(monedaDrop);
-
         // Crear siguientes celdas
         // Poner solo el drop down en la primer columna (oferta economica)
-        for (let j = 0; j < 3; j++) {
-            let cell = row.insertCell(-1);
-            let monedaDrop = document.createElement('select');
-            monedaDrop.id = 'monedadrop';
-            let monedasList = ['USD', '$', 'EUR'];
-            for (let i = 0; i < monedasList.length; i++) {
-                let optionElement = document.createElement('option');
-                optionElement.innerHTML = monedasList[i];
-                monedaDrop.appendChild(optionElement);
+        for (let j = 0; j < 2; j++) {
+            if (flagMoneda == 0) {
+                let cell = row.insertCell(-1);
+                let monedaDrop = document.createElement('select');
+                monedaDrop.id = 'monedadrop';
+                let monedasList = ['USD', '$', 'EUR'];
+                for (let i = 0; i < monedasList.length; i++) {
+                    let optionElement = document.createElement('option');
+                    optionElement.innerHTML = monedasList[i];
+                    monedaDrop.appendChild(optionElement);
+                }
+                cell.appendChild(monedaDrop);
+                let textbox = document.createElement('input');
+                textbox.setAttribute('type', 'text');
+                textbox.style.width = '110px';
+                cell.appendChild(textbox);    
+                flagMoneda = 1;
             }
-            cell.appendChild(monedaDrop);
+            let cell = row.insertCell(-1);
             let textbox = document.createElement('input');
             textbox.setAttribute('type', 'text');
             textbox.style.width = '110px';
             cell.appendChild(textbox);
         }
+        flagMoneda = 0;
     }
     tablaEval.appendChild(table);
 });
