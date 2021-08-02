@@ -9,6 +9,7 @@ let flagRefList = 0;
 // Obtener los elementos necesarios previos a funciones
 let tablaCump = document.getElementById("tablaCump");
 let tablaPunt = document.getElementById("tablaPunt");
+let tablaEval = document.getElementById("tablaEval");
 
 
 // Funcion para limpiar divs
@@ -187,7 +188,7 @@ function tablaPuntGen() {
     if (!puntuablesNum) {
         alert('Asegurese de llenar los campos de requisitos puntuables');
     } else {
-        // Crear arrays con los requisitos para generar la tabla
+        // Crear arrays con los proveedores para generar la tabla
         let arrayProv = new Array();
         let provList = ofertasDiv.children;
         for (let i = 0; i < provList.length; i++) {
@@ -250,6 +251,68 @@ btnSuma.addEventListener('click', function doSuma () {
         let valueCell = document.getElementById('tablaPuntaje').rows[i].cells[j-1].lastChild
         valueCell.value = suma.toString();
     }
+});
+
+
+// Funcion para el boton de tabla de evaluacion
+let botonTablaEval = document.getElementById('btnEval');
+botonTablaEval.addEventListener('click', function tablaEvalGen(){;
+    cleanChild(tablaEval);
+
+    // Crear arrays con los proveedores para generar la tabla
+    let arrayProv = new Array();
+    let provList = ofertasDiv.children;
+    for (let i = 0; i < provList.length; i++) {
+        arrayProv.push(provList[i].value);
+    }
+
+    // Crear tabla
+    // Crear primer row, con los titulos de columnas
+    let table = document.createElement("TABLE");
+    let row = table.insertRow(-1);
+    // Poner un cell vacio y otro para los dropdown de monedas
+    let headerCell = document.createElement("TH");
+    headerCell.innerHTML = '';
+    row.appendChild(headerCell);
+    let monedaCell = document.createElement('TH');
+    monedaCell.innerHTML = '';
+    row.appendChild(monedaCell);
+
+    // Crear headers con texto
+    let listaHeaders = ['Oferta Economica', 'Puntuacion Economica', 'Puntuacion Final'];
+    for (let i = 0; i < listaHeaders.length; i++) {
+        let headerCell = document.createElement("TH");
+        headerCell.innerHTML = listaHeaders[i];
+        row.appendChild(headerCell);
+    }
+
+    // Crear siguientes rows
+    for (let i = 0; i < arrayProv.length; i++) {
+        // Primero insertar el nombre de empresa
+        row = table.insertRow(-1);
+        let cell = row.insertCell(-1);
+        cell.innerHTML = arrayProv[i];
+        // Insertar el dropdown de monedas
+        let monedaDrop = document.createElement('select');
+        let monedasList = ['USD', '$', 'EUR'];
+        for (let i = 0; i < monedasList.length; i++) {
+            let optionElement = document.createElement('option');
+            optionElement.innerHTML = monedasList[i];
+            monedaDrop.appendChild(optionElement);
+        }
+        let newCell = row.insertCell(-1);
+        newCell.appendChild(monedaDrop);
+
+        // Crear siguientes celdas
+        for (let j = 0; j < 3; j++) {
+            let cell = row.insertCell(-1);
+            let textbox = document.createElement('input');
+            textbox.setAttribute('type', 'text');
+            textbox.style.width = '110px'
+            cell.appendChild(textbox);
+        }
+    }
+    tablaEval.appendChild(table);
 });
 
 
