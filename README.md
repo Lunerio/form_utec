@@ -1,4 +1,6 @@
-![logo](https://www.smarttalent.uy/innovaportal/file/55089/1/utec.png)
+<div align="center">
+    <img src="https://www.smarttalent.uy/innovaportal/file/55089/1/utec.png" width="400px">
+</div>
 
 # Formularios técnicos para presupuestaciones en UTEC
 
