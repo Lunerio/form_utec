@@ -14,5 +14,5 @@
 * Para llenar el Informe de Análisis Técnico de Ofertas los pasos a seguir son los mismos, pero debe abrir el archivo llamado form_informe_tecnico.html
 
 #### Contacto:
-[GitHub](https://github.com/Lunerio)
-[Linkedin](https://linkedin.com/in/lunerio)
+-[GitHub](https://github.com/Lunerio)
+-[Linkedin](https://linkedin.com/in/lunerio)
