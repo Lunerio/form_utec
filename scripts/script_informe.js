@@ -218,6 +218,7 @@ function tablaPuntGen() {
             row = table.insertRow(-1);
             let cell = row.insertCell(-1);
             cell.innerHTML = arrayProv[i];
+            cell.className = 'cellEmp';
             for (let j = 0; j <= puntuablesNum; j++) {
                 let cell = row.insertCell(-1);
                 let textbox = document.createElement('input');
