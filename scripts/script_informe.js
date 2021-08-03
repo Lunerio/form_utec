@@ -126,6 +126,7 @@ function tablaCumpGen() {
             row = table.insertRow(-1);
             let cell = row.insertCell(-1);
             cell.innerHTML = arrayProv[i];
+            cell.className = 'empName';
             for (let j = 0; j < excluyentesNum; j++) {
                 let cell = row.insertCell(-1);
                 let checkbox = document.createElement('input');
@@ -155,8 +156,8 @@ textPuntuables.addEventListener('input', function createPuntuablesText() {
             cleanChild(tablaCump);
         }
         else {
-            if (puntuablesNum > 10) {
-                puntuablesNum = 10;
+            if (puntuablesNum > 15) {
+                puntuablesNum = 15;
             }
             for (let i = 1; i <= puntuablesNum ; i++) {
                 let divEspe = document.createElement('div');
@@ -420,6 +421,15 @@ document.getElementById('pdfGen').onclick = function () {
     pdfGen = document.getElementById('pdfGen');
     pdfGen.className = 'botPDF';
 
+    etex = document.getElementById('ETEX');
+    etex.innerHTML = 'Especificaciones Técnicas Excluyentes (ETEx)';
+
+    et = document.getElementById('ET');
+    et.innerHTML = 'Especificaciones Técnicas Puntuables (ET)';
+
+    textExcluyentes.className = 'botPDF';
+    textPuntuables.className = 'botPDF';
+
     window.print();
 
     // Volver los estilos para atras
@@ -445,4 +455,9 @@ document.getElementById('pdfGen').onclick = function () {
     monedaSelect.className = '';
     textbox_excluyentes.className = '';
     excluyentes_data.className = '';
+    textExcluyentes.className = '';
+    textPuntuables.className = '';
+    etex.innerHTML = 'Especificaciones Técnicas Excluyentes (ETEx):';
+    et.innerHTML = 'Especificaciones Técnicas Puntuables (ET):';
+    textExcluyentes
 }

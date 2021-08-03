@@ -254,3 +254,19 @@ td {
     text-align: left;
     padding-right: 30px;
 }
+
+#ETEX {
+    font-weight: bold;
+}
+
+#ET {
+    font-weight: bold;
+}
+
+.empName {
+    text-align: left;
+}
+
+#monedadrop {
+    text-align: end;
+}
