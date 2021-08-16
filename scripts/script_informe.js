@@ -5,6 +5,8 @@ let flagObservaciones2 = 0;
 let flagConclusiones = 0;
 let flagRefList = 0;
 let flagMoneda = 0;
+let flagDivExcluyentes = 0;
+let flagDivPuntuables = 0;
 
 // Obtener los elementos necesarios previos a funciones
 let tablaCump = document.getElementById("tablaCump");
@@ -430,6 +432,33 @@ document.getElementById('pdfGen').onclick = function () {
     textExcluyentes.className = 'botPDF';
     textPuntuables.className = 'botPDF';
 
+    divExcluyentes = document.getElementById('divExcluyentes');
+    let excluyentesNum = textExcluyentes.value;
+    if (!excluyentesNum) {
+        divExcluyentes.className = 'botPDF';
+        flagDivExcluyentes = 1;
+    } else {
+        let excluyentesNum = Number(textExcluyentes.value);
+        if (excluyentesNum === 0) {
+           divExcluyentes.className = 'botPDF';
+           flagDivExcluyentes = 1;
+        }
+    }
+
+    divPuntuables = document.getElementById('divPuntuables');
+    let puntuablesNum = textPuntuables.value;
+    if (!puntuablesNum) {
+        divPuntuables.className = 'botPDF';
+        flagDivEPuntuables = 1;
+    } else {
+        let puntuablesNum = Number(textPuntuables.value);
+        if (puntuablesNum === 0) {
+           divEPuntuables.className = 'botPDF';
+           flagDivPuntuables = 1;
+        }
+    }
+
+
     window.print();
 
     // Volver los estilos para atras
@@ -459,5 +488,12 @@ document.getElementById('pdfGen').onclick = function () {
     textPuntuables.className = '';
     etex.innerHTML = 'Especificaciones Técnicas Excluyentes (ETEx):';
     et.innerHTML = 'Especificaciones Técnicas Puntuables (ET):';
-    textExcluyentes
+    if (flagDivExcluyentes === 1) {
+        divExcluyentes.className = '';
+        flagDivExcluyentes = 0;
+    }
+    if (flagDivPuntuables === 1) {
+        divPuntuables.className = '';
+        flagDivPuntuables = 0;
+    }
 }
