@@ -142,6 +142,10 @@ function tablaCumpGen() {
 
 
 // Crear textboxes para requisitos puntuables
+
+// Hacer divs en lugar de textboxes. Generar una ID y en el css estilarlos.
+// Ademas poner los titulos de descripcion y de criterios como un div.
+// Estilar todo en el tamano correcto en el css
 let puntuablesDiv = document.getElementById("textbox_puntuables");
 let textPuntuables = document.getElementById("puntuables");
 textPuntuables.addEventListener('input', function createPuntuablesText() {
