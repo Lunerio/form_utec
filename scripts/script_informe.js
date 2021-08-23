@@ -110,7 +110,6 @@ function tablaCumpGen() {
         }
 
         // Crear tabla
-
         // Crear primer row, con los requisitos excluyentes
         let table = document.createElement("TABLE");
         let row = table.insertRow(-1);
@@ -142,10 +141,6 @@ function tablaCumpGen() {
 
 
 // Crear textboxes para requisitos puntuables
-
-// Hacer divs en lugar de textboxes. Generar una ID y en el css estilarlos.
-// Ademas poner los titulos de descripcion y de criterios como un div.
-// Estilar todo en el tamano correcto en el css
 let puntuablesDiv = document.getElementById("textbox_puntuables");
 let textPuntuables = document.getElementById("puntuables");
 textPuntuables.addEventListener('input', function createPuntuablesText() {
@@ -225,6 +220,7 @@ textPuntuables.addEventListener('input', function createPuntuablesText() {
     }
 });
 
+
 // Funcion para el boton de tabla de puntuacion
 let botonTablaPunt = document.getElementById('btnPunt');
 botonTablaPunt.addEventListener('click', tablaPuntGen);
@@ -279,6 +275,7 @@ function tablaPuntGen() {
         tablaPunt.appendChild(table);
     }
 }
+
 
 // Esta funcion hace la suma de puntajes de cada row y lo pone en la ultima celda
 let btnSuma = document.getElementById('btnSuma');

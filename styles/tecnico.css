@@ -140,10 +140,7 @@ input {
 #divEspe {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    height: 23px;
-    overflow-x: visible;
-    word-wrap: break-word;
+    align-items: baseline;
 }
 
 #textEsp {
@@ -265,11 +262,15 @@ td {
     width: 50%;
     max-width: 50%;
     margin-right: 30px;
+    overflow-x: auto;
+    word-wrap: break-word;
 }
 
 #textbox2 {
     width: 50%;
     max-width: 50%;
+    overflow-x: auto;
+    word-wrap: break-word;
 }
 
 .prePDF {
