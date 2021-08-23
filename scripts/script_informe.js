@@ -210,11 +210,13 @@ textPuntuables.addEventListener('input', function createPuntuablesText() {
                 let textBox1 = document.createElement('div');
                 textBox1.id = "textbox1";
                 textBox1.contentEditable = "true";
+                textBox1.className = "prePDF";
                 divEspe.appendChild(textBox1);
 
                 let textBox2 = document.createElement('div');
                 textBox2.id = "textbox2"
                 textBox2.contentEditable = "true";
+                textBox2.className = "prePDF";
                 divEspe.appendChild(textBox2);
 
                 puntuablesDiv.appendChild(divEspe);
@@ -281,8 +283,6 @@ function tablaPuntGen() {
 // Esta funcion hace la suma de puntajes de cada row y lo pone en la ultima celda
 let btnSuma = document.getElementById('btnSuma');
 btnSuma.addEventListener('click', function doSuma () {
-    // Obtener el elemento de tabla y asi sus rows.
-    // Cada row son los tr, y debemos arrancar desde el index 1
     let rows = document.getElementById('tablaPuntaje').rows;
     // Primero recorrer los rows y limpiar el ultimo cell
     for (let i = 1; i < rows.length; i++) {
@@ -322,9 +322,6 @@ botonTablaEval.addEventListener('click', function tablaEvalGen(){;
     let headerCell = document.createElement("TH");
     headerCell.innerHTML = '';
     row.appendChild(headerCell);
-    // let monedaCell = document.createElement('TH');
-    // monedaCell.innerHTML = '';
-    // row.appendChild(monedaCell);
 
     // Crear headers con texto
     let listaHeaders = ['Oferta Económica', 'Puntuación Económica', 'Puntuación Final'];
@@ -341,8 +338,7 @@ botonTablaEval.addEventListener('click', function tablaEvalGen(){;
         let cell = row.insertCell(-1);
         cell.className = 'cellEmp';
         cell.innerHTML = arrayProv[i];
-        // Crear siguientes celdas
-        // Poner solo el drop down en la primer columna (oferta economica)
+
         for (let j = 0; j < 2; j++) {
             if (flagMoneda == 0) {
                 let cell = row.insertCell(-1);
@@ -502,6 +498,15 @@ document.getElementById('pdfGen').onclick = function () {
         }
     }
 
+    let et1 = document.querySelectorAll('#textbox1');
+    for (let i = 0; i < et1.length; i++) {
+        et1[i].className = 'postPDF';
+    }
+
+    let et2 = document.querySelectorAll('#textbox2');
+    for (let i = 0; i < et2.length; i++) {
+        et2[i].className = 'postPDF';
+    }
 
     window.print();
 

@@ -142,10 +142,8 @@ input {
     flex-direction: row;
     align-items: center;
     height: 23px;
-}
-
-#divEspe input {
-    width: 40%;
+    overflow-x: visible;
+    word-wrap: break-word;
 }
 
 #textEsp {
@@ -216,32 +214,6 @@ td {
     margin-bottom: 10%;
 }
 
-.prePDF {
-    background-color: rgb(0, 170, 224);
-}
-
-.postPDF {
-    background-color: transparent;
-}
-
-.postPdfOther {
-    background: none;
-    border: none;
-}
-
-.botPDF {
-    height: 0;
-    visibility: hidden;
-    display: none;
-}
-
-.selectPDF {
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    text-align: end;
-}
-
 #tablaEval table tbody tr td select {
     text-align: end;
 }
@@ -291,11 +263,37 @@ td {
 
 #textbox1 {
     width: 50%;
+    max-width: 50%;
     margin-right: 30px;
-    background-color: rgb(0, 170, 224);
 }
 
 #textbox2 {
     width: 50%;
+    max-width: 50%;
+}
+
+.prePDF {
     background-color: rgb(0, 170, 224);
+}
+
+.postPDF {
+    background-color: transparent;
+}
+
+.postPdfOther {
+    background: none;
+    border: none;
+}
+
+.botPDF {
+    height: 0;
+    visibility: hidden;
+    display: none;
+}
+
+.selectPDF {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    text-align: end;
 }
