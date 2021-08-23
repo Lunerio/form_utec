@@ -165,6 +165,39 @@ textPuntuables.addEventListener('input', function createPuntuablesText() {
             if (puntuablesNum > 15) {
                 puntuablesNum = 15;
             }
+
+            // Primer row con titulos.
+            // Div con contenido interno
+            let titulosDiv = document.createElement('div');
+            titulosDiv.id = "titulosDiv";
+
+            // Primer título
+            let textEsp = document.createElement('h4');
+            textEsp.innerHTML = 'ET0: ';
+            textEsp.style.marginRight = "3px";
+            textEsp.style.color = "transparent";
+            titulosDiv.appendChild(textEsp);
+
+            // Sub div para los títulos
+            let subDiv = document.createElement('div');
+            subDiv.style.display = "flex";
+            subDiv.style.width = "100%";
+
+            // Título de Descripción
+            let titleDesc = document.createElement('div');
+            titleDesc.innerHTML = 'Descripción';
+            titleDesc.id = "titleDesc";
+            subDiv.appendChild(titleDesc);
+
+            // Título de criterios
+            let titleCrit = document.createElement('div');
+            titleCrit.innerHTML = 'Criterios de Puntuación';
+            titleCrit.id = "titleCrit";
+            subDiv.appendChild(titleCrit);
+
+            titulosDiv.appendChild(subDiv);
+            puntuablesDiv.appendChild(titulosDiv);
+
             for (let i = 1; i <= puntuablesNum ; i++) {
                 let divEspe = document.createElement('div');
                 divEspe.id = 'divEspe';
@@ -174,8 +207,15 @@ textPuntuables.addEventListener('input', function createPuntuablesText() {
                 textEsp.id = 'textEsp';
                 divEspe.appendChild(textEsp);
 
-                let textBox = document.createElement('input');
-                divEspe.appendChild(textBox);
+                let textBox1 = document.createElement('div');
+                textBox1.id = "textbox1";
+                textBox1.contentEditable = "true";
+                divEspe.appendChild(textBox1);
+
+                let textBox2 = document.createElement('div');
+                textBox2.id = "textbox2"
+                textBox2.contentEditable = "true";
+                divEspe.appendChild(textBox2);
 
                 puntuablesDiv.appendChild(divEspe);
             }
